@@ -11,7 +11,7 @@ def open_file_in_neovim(pipe_name, file_path, line_number):
         subprocess.run(open_command, check=True)
 
         # Second command to jump to line
-        goto_line_command = ["nvim", "--server", pipe_name, "--remote-send", f":{line_number}G\r"]
+        goto_line_command = ["nvim", "--server", pipe_name, "--remote-send", f"<Esc>{line_number}G"]
         subprocess.run(goto_line_command, check=True)
     except Exception as e:
         print(f"Error occurred while opening file in Neovim: {e}")
